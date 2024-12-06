@@ -306,9 +306,9 @@ func (s *SCIMService) CreateOrGetUser(ctx context.Context, cur *CreateUserReques
 			// maybe the user in the SCIM side was changed, so we need to update the user in the SCIM Side
 			// according to the create user request
 			if !reflect.DeepEqual(cur, response) {
-				slog.Warn("aws CreateOrGetUser: user already exists, but attributes are different, updating the user")
+				log.Warn("aws CreateOrGetUser: user already exists, but attributes are different, updating the user")
 
-				slog.WithFields(log.Fields{
+				log.WithFields(log.Fields{
 					"user":        response.UserName,
 					"id":          response.ID,
 					"externalId":  response.ExternalID,
@@ -318,7 +318,7 @@ func (s *SCIMService) CreateOrGetUser(ctx context.Context, cur *CreateUserReques
 					"email":       response.Emails[0].Value,
 				}).Warn("aws CreateOrGetUser: attributes before update")
 
-				slog.WithFields(log.Fields{
+				log.WithFields(log.Fields{
 					"user":        cur.UserName,
 					"id":          cur.ID,
 					"externalId":  cur.ExternalID,
