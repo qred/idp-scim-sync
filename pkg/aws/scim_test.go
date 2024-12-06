@@ -13,9 +13,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	mocks "github.com/slashdevops/idp-scim-sync/mocks/aws"
 	"github.com/stretchr/testify/assert"
+	"go.uber.org/mock/gomock"
 )
 
 type mockErrReader int
@@ -34,6 +34,24 @@ func ReadJSONFileAsString(t *testing.T, fileName string) string {
 func TestNewSCIMService(t *testing.T) {
 	mockCtrl := gomock.NewController(t)
 	defer mockCtrl.Finish()
+
+	t.Run("should return error when url is empty", func(t *testing.T) {
+		mockHTTPClient := mocks.NewMockHTTPClient(mockCtrl)
+
+		got, err := NewSCIMService(mockHTTPClient, "", "MyToken")
+		assert.Error(t, err)
+		assert.ErrorIs(t, err, ErrURLEmpty)
+		assert.Nil(t, got)
+	})
+
+	t.Run("should return error when token is empty", func(t *testing.T) {
+		mockHTTPClient := mocks.NewMockHTTPClient(mockCtrl)
+
+		got, err := NewSCIMService(mockHTTPClient, "https://testing.com", "")
+		assert.Error(t, err)
+		assert.ErrorIs(t, err, ErrBearerTokenEmpty)
+		assert.Nil(t, got)
+	})
 
 	t.Run("should return AWSSCIMProvider", func(t *testing.T) {
 		mockHTTPClient := mocks.NewMockHTTPClient(mockCtrl)
