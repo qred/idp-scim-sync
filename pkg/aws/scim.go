@@ -309,23 +309,23 @@ func (s *SCIMService) CreateOrGetUser(ctx context.Context, cur *CreateUserReques
 				slog.Warn("aws CreateOrGetUser: user already exists, but attributes are different, updating the user")
 
 				slog.Warn("aws CreateOrGetUser: attributes before update",
-					"user":        response.UserName,
-					"id":          response.ID,
-					"externalId":  response.ExternalID,
-					"active":      response.Active,
-					"displayName": response.DisplayName,
-					"nickName":    response.NickName,
-					"email":       response.Emails[0].Value,
+					"user", response.UserName,
+					"id", response.ID,
+					"externalId", response.ExternalID,
+					"active", response.Active,
+					"displayName", response.DisplayName,
+					"nickName", response.NickName,
+					"email", response.Emails[0].Value,
 				)
 
 				slog.Warn("aws CreateOrGetUser: attributes after update", 
-					"user":        cur.UserName,
-					"id":          cur.ID,
-					"externalId":  cur.ExternalID,
-					"active":      cur.Active,
-					"displayName": cur.DisplayName,
-					"nickName":    cur.NickName,
-					"email":       cur.Emails[0].Value,
+					"user", cur.UserName,
+					"id", cur.ID,
+					"externalId", cur.ExternalID,
+					"active", cur.Active,
+					"displayName", cur.DisplayName,
+					"nickName", cur.NickName,
+					"email", cur.Emails[0].Value,
 				)
 
 				pur := &PutUserRequest{
