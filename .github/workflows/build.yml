@@ -38,11 +38,11 @@ jobs:
       - name: Test
         run: make test
 
-      - name: codecov coverage report
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-          files: ./coverage.out
+      # - name: codecov coverage report
+      #   uses: codecov/codecov-action@v4
+      #   with:
+      #     token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+      #     files: ./coverage.out
 
       - name: Build
         run: make build
