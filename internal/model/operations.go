@@ -2,10 +2,7 @@ package model
 
 import (
 	"errors"
-
-	"github.com/slashdevops/idp-scim-sync/internal/convert"
-
-	log "github.com/sirupsen/logrus"
+	"log/slog"
 )
 
 var (
@@ -137,8 +134,8 @@ func UsersOperations(idp, scim *UsersResult) (create, update, equal, remove *Use
 		return
 	}
 
-	log.Trace("idp UsersResult: ", convert.ToJSONString(idp))
-	log.Trace("scim UsersResult: ", convert.ToJSONString(scim))
+	slog.Debug("idp UsersResult", "idp", idp)
+	slog.Debug("scim UsersResult", "scim", scim)
 
 	idpUsers := make(map[string]struct{})
 	scimUsers := make(map[string]User)

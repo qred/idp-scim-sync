@@ -1,18 +1,23 @@
 package cmd
 
 import (
-	log "github.com/sirupsen/logrus"
-	"github.com/slashdevops/idp-scim-sync/internal/convert"
+	"encoding/json"
+	"fmt"
+
+	"gopkg.in/yaml.v3"
 )
 
 // show resource structure as outFormat
 func show(outFormat string, resource interface{}) {
 	switch outFormat {
 	case "json":
-		log.Infof("%s", convert.ToJSONString(resource, true))
+		j, _ := json.MarshalIndent(resource, "", "  ")
+		fmt.Print(string(j))
 	case "yaml":
-		log.Infof("%s", convert.ToYAML(resource))
+		y, _ := yaml.Marshal(resource)
+		fmt.Print(string(y))
 	default:
-		log.Infof("%s", convert.ToJSONString(resource, true))
+		j, _ := json.MarshalIndent(resource, "", "  ")
+		fmt.Print(string(j))
 	}
 }

@@ -1,10 +1,9 @@
 package scim
 
 import (
+	"log/slog"
 	"strings"
 
-	log "github.com/sirupsen/logrus"
-	"github.com/slashdevops/idp-scim-sync/internal/convert"
 	"github.com/slashdevops/idp-scim-sync/internal/model"
 	"github.com/slashdevops/idp-scim-sync/pkg/aws"
 )
@@ -16,27 +15,27 @@ func buildUser(user *aws.User) *model.User {
 	}
 
 	if user.ID == "" {
-		log.Warn("scim: User ID is empty")
+		slog.Warn("scim: User ID is empty")
 		return nil
 	}
 
 	if user.Name == nil {
-		log.Warn("scim: User name is nil")
+		slog.Warn("scim: User name is nil")
 		return nil
 	}
 
 	if user.Name.GivenName == "" {
-		log.Warn("scim: User given name is empty")
+		slog.Warn("scim: User given name is empty")
 		return nil
 	}
 
 	if user.Name.FamilyName == "" {
-		log.Warn("scim: User family name is empty")
+		slog.Warn("scim: User family name is empty")
 		return nil
 	}
 
 	if user.Emails == nil {
-		log.Warn("scim: User emails is nil, setting primary email as the only email")
+		slog.Warn("scim: User emails is nil, setting primary email as the only email")
 		return nil
 	}
 
@@ -137,7 +136,7 @@ func buildUser(user *aws.User) *model.User {
 		WithEnterpriseData(enterpriseData).
 		Build()
 
-	log.Tracef("scim: buildUser() from: \n%s, \n--> to:\n %s\n", convert.ToJSONString(user), convert.ToJSONString(userModel))
+	slog.Debug("scim: buildUser() converted user", "from", user, "to", userModel)
 
 	return userModel
 }
@@ -223,7 +222,7 @@ func buildCreateUserRequest(user *model.User) *aws.CreateUserRequest {
 		}
 	}
 
-	log.Tracef("scim buildCreateUserRequest(): %+v", convert.ToJSONString(userRequest))
+	slog.Debug("scim: buildCreateUserRequest()", "user", userRequest)
 
 	return userRequest
 }
@@ -310,7 +309,7 @@ func buildPutUserRequest(user *model.User) *aws.PutUserRequest {
 		}
 	}
 
-	log.Tracef("scim buildPutUserRequest(): %+v", convert.ToJSONString(userRequest))
+	slog.Debug("scim: buildPutUserRequest()", "user", userRequest)
 
 	return userRequest
 }
