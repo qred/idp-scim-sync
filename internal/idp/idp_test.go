@@ -270,6 +270,7 @@ func TestGetUsers(t *testing.T) {
 						WithIPID("1").
 						WithName(&model.Name{GivenName: "user", FamilyName: "1"}).
 						WithDisplayName("user 1").
+						WithNickName("user", "1").
 						WithUserName("user.1@mail.com").
 						WithActive(true).
 						WithEmails(
@@ -286,6 +287,7 @@ func TestGetUsers(t *testing.T) {
 						WithIPID("2").
 						WithName(&model.Name{GivenName: "user", FamilyName: "2"}).
 						WithDisplayName("user 2").
+						WithNickName("user", "2").
 						WithUserName("user.2@mail.com").
 						WithActive(false).
 						WithEmails(
@@ -624,6 +626,7 @@ func TestGetUsersByGroupsMembers(t *testing.T) {
 						WithIPID("1").
 						WithName(&model.Name{GivenName: "user", FamilyName: "1"}).
 						WithDisplayName("user 1").
+						WithNickName("user", "1").
 						WithActive(true).
 						WithUserName("user.1@mail.com").
 						WithEmails(
@@ -640,6 +643,7 @@ func TestGetUsersByGroupsMembers(t *testing.T) {
 						WithIPID("2").
 						WithName(&model.Name{GivenName: "user", FamilyName: "2"}).
 						WithDisplayName("user 2").
+						WithNickName("user", "2").
 						WithActive(false).
 						WithUserName("user.2@mail.com").
 						WithEmails(
@@ -656,6 +660,7 @@ func TestGetUsersByGroupsMembers(t *testing.T) {
 						WithIPID("3").
 						WithName(&model.Name{GivenName: "user", FamilyName: "3"}).
 						WithDisplayName("user 3").
+						WithNickName("user", "3").
 						WithActive(false).
 						WithUserName("user.3@mail.com").
 						WithEmails(
@@ -672,6 +677,7 @@ func TestGetUsersByGroupsMembers(t *testing.T) {
 						WithIPID("4").
 						WithName(&model.Name{GivenName: "user", FamilyName: "4"}).
 						WithDisplayName("user 4").
+						WithNickName("user", "4").
 						WithActive(false).
 						WithUserName("user.4@mail.com").
 						WithEmails(
