@@ -115,12 +115,12 @@ func initConfig() {
 	logHandlerOptions = &slog.HandlerOptions{Level: slog.LevelInfo}
 	switch strings.ToLower(cfg.LogFormat) {
 	case "json":
-			logHandler = slog.NewJSONHandler(os.Stdout, logHandlerOptions)
+		logHandler = slog.NewJSONHandler(os.Stdout, logHandlerOptions)
 	case "text":
-			logHandler = slog.NewTextHandler(os.Stdout, logHandlerOptions)
+		logHandler = slog.NewTextHandler(os.Stdout, logHandlerOptions)
 	default:
-			slog.Warn("unknown log format, using text", "format", cfg.LogFormat)
-			logHandler = slog.NewTextHandler(os.Stdout, logHandlerOptions)
+		slog.Warn("unknown log format, using text", "format", cfg.LogFormat)
+		logHandler = slog.NewTextHandler(os.Stdout, logHandlerOptions)
 	}
 
 	logger = slog.New(logHandler)

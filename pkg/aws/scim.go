@@ -318,7 +318,7 @@ func (s *SCIMService) CreateOrGetUser(ctx context.Context, cur *CreateUserReques
 					"email", response.Emails[0].Value,
 				)
 
-				slog.Warn("aws CreateOrGetUser: attributes after update", 
+				slog.Warn("aws CreateOrGetUser: attributes after update",
 					"user", cur.UserName,
 					"id", cur.ID,
 					"externalId", cur.ExternalID,
