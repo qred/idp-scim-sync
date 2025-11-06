@@ -315,6 +315,7 @@ func TestUsersOperations(t *testing.T) {
 								).
 								WithName(&Name{FamilyName: "1", GivenName: "user"}).
 								WithDisplayName("user 1").
+								WithNickName("user", "1").
 								WithActive(true).
 								Build(),
 							UserBuilder().
@@ -324,6 +325,7 @@ func TestUsersOperations(t *testing.T) {
 								).
 								WithName(&Name{FamilyName: "2", GivenName: "user"}).
 								WithDisplayName("user 2").
+								WithNickName("user", "2").
 								WithActive(true).
 								Build(),
 						},
@@ -337,6 +339,7 @@ func TestUsersOperations(t *testing.T) {
 							).
 							WithName(&Name{FamilyName: "1", GivenName: "user"}).
 							WithDisplayName("user 1").
+							WithNickName("user", "1").
 							WithActive(true).
 							Build(),
 						UserBuilder().WithIPID("2").
@@ -345,6 +348,7 @@ func TestUsersOperations(t *testing.T) {
 							).
 							WithName(&Name{FamilyName: "2", GivenName: "user"}).
 							WithDisplayName("user 2").
+							WithNickName("user", "2").
 							WithActive(true).
 							Build(),
 					},
@@ -362,6 +366,7 @@ func TestUsersOperations(t *testing.T) {
 							).
 							WithName(&Name{FamilyName: "1", GivenName: "user"}).
 							WithDisplayName("user 1").
+							WithNickName("user", "1").
 							WithActive(true).
 							Build(),
 						UserBuilder().
@@ -371,6 +376,7 @@ func TestUsersOperations(t *testing.T) {
 							).
 							WithName(&Name{FamilyName: "2", GivenName: "user"}).
 							WithDisplayName("user 2").
+							WithNickName("user", "2").
 							WithActive(true).
 							Build(),
 					},
@@ -387,6 +393,7 @@ func TestUsersOperations(t *testing.T) {
 							WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "1", GivenName: "user"}).
 							WithDisplayName("user 1").
+							WithNickName("user", "1").
 							WithActive(true).
 							Build(),
 						UserBuilder().
@@ -394,6 +401,7 @@ func TestUsersOperations(t *testing.T) {
 							WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "different", GivenName: "user"}).
 							WithDisplayName("user 2").
+							WithNickName("user", "2").
 							WithActive(true).
 							Build(),
 					},
@@ -405,6 +413,7 @@ func TestUsersOperations(t *testing.T) {
 							WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "1", GivenName: "user"}).
 							WithDisplayName("user 1").
+							WithNickName("user", "1").
 							WithActive(true).
 							Build(),
 						UserBuilder().
@@ -412,6 +421,7 @@ func TestUsersOperations(t *testing.T) {
 							WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "2", GivenName: "user"}).
 							WithDisplayName("user 2").
+							WithNickName("user", "2").
 							WithActive(true).
 							Build(),
 						UserBuilder().
@@ -432,6 +442,7 @@ func TestUsersOperations(t *testing.T) {
 						WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 						WithName(&Name{FamilyName: "different", GivenName: "user"}).
 						WithDisplayName("user 2").
+						WithNickName("user", "2").
 						WithActive(true).
 						Build(),
 				},
@@ -443,6 +454,7 @@ func TestUsersOperations(t *testing.T) {
 						WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 						WithName(&Name{FamilyName: "1", GivenName: "user"}).
 						WithDisplayName("user 1").
+						WithNickName("user", "1").
 						WithActive(true).
 						Build(),
 				},
@@ -469,6 +481,7 @@ func TestUsersOperations(t *testing.T) {
 							WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "1", GivenName: "user"}).
 							WithDisplayName("user 1").
+							WithNickName("user", "1").
 							WithActive(true).
 							Build(),
 						UserBuilder().
@@ -476,6 +489,7 @@ func TestUsersOperations(t *testing.T) {
 							WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "different", GivenName: "user"}).
 							WithDisplayName("user 2").
+							WithNickName("user", "2").
 							WithActive(true).
 							Build(),
 					},
@@ -487,6 +501,7 @@ func TestUsersOperations(t *testing.T) {
 							WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "1", GivenName: "user"}).
 							WithDisplayName("user 1").
+							WithNickName("user", "1").
 							WithActive(true).
 							Build(),
 						UserBuilder().
@@ -494,6 +509,7 @@ func TestUsersOperations(t *testing.T) {
 							WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "2", GivenName: "user"}).
 							WithDisplayName("user 2").
+							WithNickName("user", "2").
 							WithActive(true).
 							Build(),
 					},
@@ -507,6 +523,7 @@ func TestUsersOperations(t *testing.T) {
 						WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 						WithName(&Name{FamilyName: "different", GivenName: "user"}).
 						WithDisplayName("user 2").
+						WithNickName("user", "2").
 						WithActive(true).
 						Build(),
 				},
@@ -518,6 +535,7 @@ func TestUsersOperations(t *testing.T) {
 						WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 						WithName(&Name{FamilyName: "1", GivenName: "user"}).
 						WithDisplayName("user 1").
+						WithNickName("user", "1").
 						WithActive(true).
 						Build(),
 				},
@@ -533,12 +551,14 @@ func TestUsersOperations(t *testing.T) {
 							WithIPID("1").WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "1", GivenName: "user"}).
 							WithDisplayName("user 1").
+							WithNickName("user", "1").
 							WithActive(true).
 							Build(),
 						UserBuilder().
 							WithIPID("2").WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 							WithName(&Name{FamilyName: "different", GivenName: "user"}).
 							WithDisplayName("user 2").
+							WithNickName("user", "2").
 							WithActive(true).
 							Build(),
 						UserBuilder().
@@ -554,12 +574,14 @@ func TestUsersOperations(t *testing.T) {
 						WithIPID("1").WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 						WithName(&Name{FamilyName: "1", GivenName: "user"}).
 						WithDisplayName("user 1").
+						WithNickName("user", "1").
 						WithActive(true).
 						Build(),
 					UserBuilder().
 						WithIPID("2").WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 						WithName(&Name{FamilyName: "2", GivenName: "user"}).
 						WithDisplayName("user 2").
+						WithNickName("user", "2").
 						WithActive(true).
 						Build(),
 					UserBuilder().
@@ -589,6 +611,7 @@ func TestUsersOperations(t *testing.T) {
 						WithEmail(EmailBuilder().WithValue("user.2@mail.com").WithType("Work").WithPrimary(true).Build()).
 						WithName(&Name{FamilyName: "different", GivenName: "user"}).
 						WithDisplayName("user 2").
+						WithNickName("user", "2").
 						WithActive(true).
 						Build(),
 				},
@@ -600,6 +623,7 @@ func TestUsersOperations(t *testing.T) {
 						WithEmail(EmailBuilder().WithValue("user.1@mail.com").WithType("Work").WithPrimary(true).Build()).
 						WithName(&Name{FamilyName: "1", GivenName: "user"}).
 						WithDisplayName("user 1").
+						WithNickName("user", "1").
 						WithActive(true).
 						Build(),
 				},

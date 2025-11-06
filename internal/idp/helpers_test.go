@@ -58,6 +58,7 @@ func Test_buildUser(t *testing.T) {
 			want: model.UserBuilder().
 				WithName(&model.Name{GivenName: "givenName", FamilyName: "familyName", Formatted: "fullName"}).
 				WithDisplayName("fullName").
+				WithNickName("givenName", "familyName").
 				WithEmail(
 					model.EmailBuilder().
 						WithValue("user@mail.com").
@@ -99,6 +100,7 @@ func Test_buildUser(t *testing.T) {
 			want: model.UserBuilder().
 				WithName(&model.Name{GivenName: "givenName", FamilyName: "familyName", Formatted: "fullName"}).
 				WithDisplayName("fullName").
+				WithNickName("givenName", "familyName").
 				WithEmail(
 					model.EmailBuilder().
 						WithValue("user@mail.com").
@@ -162,6 +164,7 @@ func Test_buildUser(t *testing.T) {
 			want: model.UserBuilder().
 				WithName(&model.Name{GivenName: "givenName", FamilyName: "familyName", Formatted: "fullName"}).
 				WithDisplayName("fullName").
+				WithNickName("givenName", "familyName").
 				WithEmail(
 					model.EmailBuilder().
 						WithValue("user@mail.com").
