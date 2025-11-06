@@ -3,6 +3,9 @@ package model
 import (
 	"fmt"
 	"strings"
+	"unicode"
+
+	"golang.org/x/text/unicode/norm"
 )
 
 // UserBuilderChoice is the builder of User entity.
@@ -446,30 +449,25 @@ func (b *UsersResultBuilderChoice) Build() *UsersResult {
 	return b.ur
 }
 
-// Construct NickName, replace whitepaces with underscores, normalize Swedish characters
+// Construct NickName, replace whitepaces with underscores, normalize Swedish and other special characters
 func constructNickName(s1, s2 string) string {
-	// Create a mapping of Swedish characters to their normalized versions
-	replaceMap := map[rune]rune{
-		'ü': 'u',
-		'ø': 'o',
-		'ö': 'o',
-		'ï': 'i',
-		'é': 'e',
-		'ä': 'a',
-		'å': 'a',
-	}
-
-	// Create a function to replace Swedish characters
-	replaceFunc := func(r rune) rune {
-		if val, ok := replaceMap[r]; ok {
-			return val
+	// Create a function to replace Swedish and other special characters
+	replaceFunc := func(s string) string {
+		// Decompose (NFD) and remove diacritics
+		t := norm.NFD.String(s)
+		var b strings.Builder
+		for _, r := range t {
+			if unicode.Is(unicode.Mn, r) {
+				continue // skip marks
+			}
+			b.WriteRune(r)
 		}
-		return r
+		return b.String()
 	}
 
 	// Convert the strings to lowercase, apply the replacement function, and replace whitespaces with underscores
-	normalizedStr1 := strings.Map(replaceFunc, strings.ToLower(s1))
-	normalizedStr2 := strings.Map(replaceFunc, strings.ToLower(s2))
+	normalizedStr1 := replaceFunc(strings.ToLower(s1))
+	normalizedStr2 := replaceFunc(strings.ToLower(s2))
 
 	// Replace whitespaces and dashes with underscores
 	normalizedStr1 = strings.NewReplacer(" ", "", "-", "").Replace(normalizedStr1)
