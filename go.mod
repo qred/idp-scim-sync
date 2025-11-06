@@ -1,6 +1,6 @@
 module github.com/slashdevops/idp-scim-sync
 
-go 1.24.0
+go 1.25.4
 
 require (
 	github.com/aws/aws-lambda-go v1.47.0
@@ -17,6 +17,7 @@ require (
 	github.com/stretchr/testify v1.10.0
 	go.uber.org/mock v0.5.0
 	golang.org/x/oauth2 v0.24.0
+	golang.org/x/text v0.30.0
 	google.golang.org/api v0.209.0
 	gopkg.in/yaml.v3 v3.0.1
 )
@@ -73,7 +74,6 @@ require (
 	golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f // indirect
 	golang.org/x/net v0.31.0 // indirect
 	golang.org/x/sys v0.27.0 // indirect
-	golang.org/x/text v0.30.0 // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20241113202542-65e8d215514f // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20241113202542-65e8d215514f // indirect
 	google.golang.org/grpc v1.67.1 // indirect
