@@ -70,6 +70,36 @@ func TestUserBuilder(t *testing.T) {
 		assert.Equal(t, u.Emails, ub.u.Emails)
 		assert.Equal(t, u.HashCode, ub.u.HashCode)
 	})
+
+	t.Run("special characters", func(t *testing.T) {
+		ub := UserBuilder()
+		ub.WithIPID("ipid").
+			WithSCIMID("scimid").
+			WithName(&Name{GivenName: "gívénnäme", FamilyName: "fåmilyñame"}).
+			WithNickName("gívénnäme", "fåmilyñame").
+			WithDisplayName("displayname").
+			WithActive(true).
+			WithEmail(Email{Value: "email"}).
+			Build()
+
+		u := &User{
+			IPID:        "ipid",
+			SCIMID:      "scimid",
+			Name:        &Name{GivenName: "gívénnäme", FamilyName: "fåmilyñame"},
+			DisplayName: "displayname",
+			NickName:    "givenname_familyname",
+			Active:      true,
+			Emails:      []Email{{Value: "email"}},
+		}
+		u.SetHashCode()
+
+		assert.Equal(t, u.IPID, ub.u.IPID)
+		assert.Equal(t, u.SCIMID, ub.u.SCIMID)
+		assert.Equal(t, u.Name, ub.u.Name)
+		assert.Equal(t, u.Active, ub.u.Active)
+		assert.Equal(t, u.Emails, ub.u.Emails)
+		assert.Equal(t, u.HashCode, ub.u.HashCode)
+	})
 }
 
 func TestUsersResultBuilder(t *testing.T) {
